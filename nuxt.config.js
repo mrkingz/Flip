@@ -50,6 +50,8 @@ module.exports = {
       icons: {
         solid: [
           'faBars',
+          'faPencilAlt',
+          'faTachometerAlt',
           'faEnvelope',
           'faTimes',
           'faList',
@@ -58,7 +60,10 @@ module.exports = {
           'faSignOutAlt',
           'faAt',
           'faLock',
-          'faPhoneAlt'
+          'faPhoneAlt',
+          'faPowerOff',
+          'faPlusSquare',
+          'faUniversity'
         ]
       }
     }]
@@ -103,16 +108,25 @@ module.exports = {
           logout: false,
           user: false
         },
-        tokenName: 'token',
         autoFetchUser: false
       }
     },
     redirect: {
       login: '/signin',
       logout: '/signin',
-      home: '/dashboard',
-      callback: '/signin'
+      home: '/accounts',
+      callback: '/accounts'
     }
+  },
+  env: {
+    baseURL: process.env.API_URL
+  },
+  /*
+  ** Axios module configuration
+  ** See https://axios.nuxtjs.org/options
+  */
+  axios: {
+    baseURL: process.env.API_URL
   },
   /*
   ** Build configuration

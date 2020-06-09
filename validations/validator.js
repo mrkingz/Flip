@@ -1,12 +1,14 @@
 
 import Joi from '@hapi/joi'
 import user from './schemas/user'
+import account from './schemas/account'
 
 const validator = async (type, fields) => {
   try {
     const schemas = {
       signup: user.getSignUpSchema(fields),
-      signin: user.getSignInSchema()
+      signin: user.getSignInSchema(),
+      account: account.getAccountSchema()
     }
     const value = await Joi.attempt(fields, schemas[type], { abortEarly: false })
     return { hasError: false, fields: value }

@@ -80,6 +80,7 @@ export default {
           [id]: null
         }
       }
+      console.log(id, ' ============ ', value)
       this.message = null
     },
     currentBtnText (btnText) {

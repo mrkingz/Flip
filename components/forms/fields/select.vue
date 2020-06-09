@@ -6,16 +6,18 @@
     :icon="icon"
   >
     <template>
-      <input
+      <select
         :id="id"
         :ref="id"
         class="form-field"
-        :type="type"
         :value="value"
-        :placeholder="$utils.capitalize(placeholder)"
-        :autocomplete="autocomplete"
         @input="changeHandler"
       >
+        <option>-- {{ prompt }} --</option>
+        <option v-for="(option, index) in options" :key="index" :value="option.id">
+          {{ option[name] }}
+        </option>
+      </select>
     </template>
   </FieldWrapper>
 </template>
@@ -25,23 +27,23 @@ import mixins from '@/components/forms/fields/mixins'
 import FieldWrapper from '@/components/forms/fields/field-wrapper'
 
 export default {
-  name: 'TextField',
+  name: 'Select',
   components: {
     FieldWrapper
   },
   mixins: [mixins],
   props: {
-    type: {
-      type: String,
-      default: 'text'
+    options: {
+      type: Array,
+      required: true
     },
-    placeholder: {
+    prompt: {
       type: String,
       default: null
     },
-    autocomplete: {
+    name: {
       type: String,
-      default: 'off'
+      required: true
     }
   }
 }
