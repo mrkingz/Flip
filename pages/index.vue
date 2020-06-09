@@ -8,6 +8,8 @@
 </template>
 <script>
 export default {
-  name: 'LangingPage'
+  name: 'LangingPage',
+  layout: 'guest-layout',
+  middleware: 'guest'
 }
 </script>

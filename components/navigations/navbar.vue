@@ -1,5 +1,5 @@
 <template>
-  <header class="z-50 mt-2 md:mt-4">
+  <header class="z-50 mp-2 md:pt-4">
     <nav class="flex items-center justify-between text-white mx-6 md:mx-20 h-20">
       <nuxt-link tag="img" to="/" src="/airtime-flip-min.png" class="w-32 md:w-40 h-12 md:h-16 z-50 cursor-pointer" />
       <div class="z-50 font-semibold">

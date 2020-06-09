@@ -23,6 +23,7 @@ const getSignInSchema = () => {
       .trim()
       .lowercase()
       .required()
+      .label('Email or username')
       .messages({
         'string.empty': 'E-mail address cannot be empty'
       }),
