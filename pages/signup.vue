@@ -1,5 +1,9 @@
 <template>
-  <GuestTemplate :formTitle="created ? 'Signed up' : 'Sign up'" class="mt-10">
+  <GuestTemplate
+    :formTitle="created ? 'Signed up' : 'Sign up'"
+    prompt="Please sign up to enjoy our services"
+    class="mt-10"
+  >
     <div class="bg-transparent text-white mt-6">
       <div v-if="created" class="pb-6">
         <div class="mb-3 p-4 bg-zanah text-parsley rounded">
@@ -79,7 +83,7 @@
         </span>
         <span v-else>
           Already have an account?
-          <nuxt-link to="/signin" class="text-curious-blue">SignIn</nuxt-link>
+          <nuxt-link to="/signin" class="text-curious-blue">Sign in</nuxt-link>
         </span>
       </div>
     </div>
@@ -94,6 +98,8 @@ import TextField from '@/components/forms/fields/textfield'
 
 export default {
   name: 'SignIn',
+  layout: 'guest-layout',
+  middleware: 'guest',
   components: {
     Form,
     Button,
@@ -127,6 +133,14 @@ export default {
     },
     createNew () {
       this.created = false
+    }
+  },
+  head () {
+    return {
+      title: 'Sign up',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Airtimeflip sign up page' }
+      ]
     }
   }
 }

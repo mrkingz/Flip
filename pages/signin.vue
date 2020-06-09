@@ -1,0 +1,94 @@
+<template>
+  <GuestTemplate
+    formTitle="Sign in"
+    prompt="Please sign in to continue enjoying our services"
+    class="mt-10"
+  >
+    <div class="bg-transparent text-white mt-6">
+      <Form
+        :fields="fields"
+        class="guest-form"
+        btnText="Sign up"
+        url="/login"
+        validationSchemaName="signin"
+        :clickHandler="() => $auth.loginWith('local', { data: fields })"
+        @onError="handleError"
+        @onSuccess="handleSuccesss"
+      >
+        <template v-slot:fields="{ errors, changeHandler }">
+          <TextField
+            id="identity"
+            icon="user"
+            placeholder="Email or username"
+            :value="fields.identity"
+            :error="$utils.formatError(errors.identity)"
+            :changeHandler="changeHandler"
+          />
+          <TextField
+            id="password"
+            icon="lock"
+            type="password"
+            placeholder="Password"
+            :value="fields.password"
+            :error="$utils.formatError(errors.password)"
+            :changeHandler="changeHandler"
+          />
+        </template>
+      </Form>
+      <div class="mb-4 mt-2 text-sm text-shadow">
+        <span>
+          Don't have an account?
+          <nuxt-link to="/signup" class="text-curious-blue">Sign up</nuxt-link>
+        </span>
+      </div>
+    </div>
+  </GuestTemplate>
+</template>
+<script>
+
+import Form from '@/components/forms'
+import GuestTemplate from '@/components/templates/guest'
+import TextField from '@/components/forms/fields/textfield'
+
+export default {
+  name: 'SignIn',
+  layout: 'guest-layout',
+  middleware: 'guest',
+  components: {
+    Form,
+    TextField,
+    GuestTemplate
+  },
+  data: () => ({
+    fields: {
+      identity: '',
+      password: ''
+    }
+  }),
+  methods: {
+    handleError (error) {
+      if (!error.response?.success) {
+        this.fields = {
+          identity: '',
+          password: ''
+        }
+      }
+    },
+    handleSuccesss (response) {
+      const { success, payload } = response
+      if (success) {
+        this.$auth.setUser(payload.user)
+        this.$auth.setToken('local', payload.access_token)
+      }
+    }
+  },
+  head () {
+    return {
+      title: 'Sign in',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Airtimeflip sign in page' }
+      ]
+    }
+  }
+}
+</script>

@@ -100,7 +100,7 @@ export default {
           const response = (typeof this.submitHandler === 'function')
             ? await this.submitHandler(fields, this.axiosTokenSource)
             : await this.axiosMethod(fields)
-            
+
           this.processResponse(response)
         }
       } catch (error) {
@@ -131,22 +131,23 @@ export default {
 
      * @param {Object} the HTTP error object
      */
-    processError ({ response }) {
-      const status = response ? response.status : 500
-      if (status) {
+    processError (error) {
+      const { response } = error
+      if (response.status) {
         switch (status) {
           case 422:
             this.errors = response.data.data
             break
           case 404:
             this.alertType = this.response.ERROR
-            this.message = response.statusText
+            this.message = response.data.message
             break
           default:
             this.alertType = this.response.ERROR
             this.message = 'Internal error occured, try again.'
         }
       }
+      this.$emit('onError', error)
     }
   }
 }
