@@ -1,6 +1,7 @@
 
 import Joi from '@hapi/joi'
 import formatError from '../error-formatter'
+import { nameSchema } from '@/validations/schemas/common'
 
 const getSignUpSchema = (fields) => {
   /**
@@ -98,25 +99,6 @@ const usernameSchema = () => {
     username: Joi.string()
       .required()
       .min(3)
-      .error(errors => formatError(errors))
-  }
-}
-
-const nameSchema = (path, label) => {
-  return {
-    [path]: Joi.string()
-      .trim()
-      .required()
-      .max(30)
-      .custom((value, helper) => {
-        const pattern = /^[\w'\-,.][^0-9_¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
-
-        if (pattern.test(value)) {
-          return value
-        }
-        return helper.message(`${label} is not valid`)
-      })
-      .lowercase()
       .error(errors => formatError(errors))
   }
 }

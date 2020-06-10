@@ -98,7 +98,6 @@ import TextField from '@/components/forms/fields/textfield'
 
 export default {
   name: 'SignIn',
-  layout: 'guest-layout',
   middleware: 'guest',
   components: {
     Form,

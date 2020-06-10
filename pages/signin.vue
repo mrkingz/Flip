@@ -52,7 +52,6 @@ import TextField from '@/components/forms/fields/textfield'
 
 export default {
   name: 'SignIn',
-  layout: 'guest-layout',
   middleware: 'guest',
   components: {
     Form,
@@ -78,7 +77,7 @@ export default {
       const { success, payload } = response
       if (success) {
         this.$auth.setUser(payload.user)
-        this.$auth.setToken('local', payload.access_token)
+        this.$auth.setToken('local', `Bearer ${payload.access_token}`)
       }
     }
   },

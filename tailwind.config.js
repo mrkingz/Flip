@@ -38,7 +38,8 @@ module.exports = {
         60: '.6'
       },
       minWidth: theme => ({
-        ...theme('width')
+        ...theme('width'),
+        dropdown: '200px'
       }),
       padding: {
         field: '0.28rem;'
