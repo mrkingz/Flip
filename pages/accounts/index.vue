@@ -32,11 +32,13 @@ export default {
     AuthTemplate
   },
   async fetch () {
+    this.$axios.setToken(this.$auth.$storage._state['_token.local'])
     const { payload } = await this.$axios.$get('/accounts')
     this.accounts = payload
   },
   data: () => ({
     accounts: [],
+    show: false,
     accountType: {
       yes: 'Personal',
       no: 'Beneficiary'

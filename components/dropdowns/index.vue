@@ -9,7 +9,7 @@
     <div class=" bg-white min-w-dropdown z-50 rounded-b rounded-tl absolute mt-1 right-0 z-50" :class="computeMenuStyles">
       <Button icon="eye" class="links links-rounded-none" btnText="Accound details" :clickHandler="() => $router.push('/accounts')" />
       <Button icon="plus-square" class="links links-rounded-none" btnText="Add account" :clickHandler="() => $router.push('/accounts/create')" />
-      <Button icon="power-off" class="signout rounded-tl-none rounded-tr-none w-full" btnText="Sign out" :clickHandler="() => $auth.logout()" />
+      <Button icon="power-off" class="signout rounded-tl-none rounded-tr-none w-full" btnText="Sign out" :clickHandler="logout" />
     </div>
   </div>
 </template>
@@ -52,6 +52,9 @@ export default {
       if (event.key === 'Esc' || event.key === 'Escape') {
         this.showMenu = false
       }
+    },
+    async logout () {
+      await this.$auth.logout()
     }
   }
 }
