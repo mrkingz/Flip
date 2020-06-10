@@ -135,7 +135,7 @@ export default {
      */
     processError (error) {
       const { response } = error
-      const status = response ? response.status || 500
+      const status = response ? response.status : 500
       switch (status) {
         case 422:
           this.errors = response.data.data

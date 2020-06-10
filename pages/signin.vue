@@ -73,9 +73,9 @@ export default {
       }
     },
     async signin () {
-      const { data } = await this.$auth.loginWith('local', { data: this.fields })
+      const { data } = await this.$auth.loginWith('local', { data: this.fields }) || {}
       const { success, payload } = data
-      console.log(data, 'Payload >>>>>>>>>>>>> ', payload, payload.user)
+      console.log(data, success, 'Payload >>>>>>>>>>>>> ', payload, payload.user)
       if (payload && payload.access_token) {
         this.$nextTick(() => {
           this.$auth.setUser(payload.user)

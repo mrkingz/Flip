@@ -1,6 +1,9 @@
 
 module.exports = {
   mode: 'spa',
+  server: {
+    port: 8000
+  },
   /*
   ** Headers of the page
   */
@@ -53,11 +56,8 @@ module.exports = {
           'faPencilAlt',
           'faTachometerAlt',
           'faEnvelope',
-          'faTimes',
-          'faList',
           'faUser',
           'faEye',
-          'faSignOutAlt',
           'faAt',
           'faLock',
           'faPhoneAlt',
@@ -113,9 +113,7 @@ module.exports = {
     },
     redirect: {
       login: '/signin',
-      logout: '/signin',
-      home: '/accounts',
-      callback: '/signin'
+      logout: '/signin'
     }
   },
   env: {
