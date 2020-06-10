@@ -2,7 +2,7 @@
   <Select
     :id="id"
     icon="university"
-    prompt="Account type"
+    prompt="Bank name"
     name="bank_name"
     :value="value"
     :error="error"

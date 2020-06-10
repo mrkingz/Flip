@@ -80,11 +80,10 @@ export default {
           [id]: null
         }
       }
-      console.log(id, ' ============ ', value)
       this.message = null
     },
     currentBtnText (btnText) {
-      return this.isProcessing ? 'Sending...' : btnText
+      return this.isProcessing ? 'Wait..' : btnText
     },
     async formSubmitHandler () {
       try {
@@ -134,6 +133,7 @@ export default {
      */
     processError (error) {
       const { response } = error
+      console.log(error)
       if (response.status) {
         switch (status) {
           case 422:

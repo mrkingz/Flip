@@ -13,7 +13,7 @@
         :value="value"
         @input="changeHandler"
       >
-        <option>-- {{ prompt }} --</option>
+        <option value="">-- {{ prompt }} --</option>
         <option v-for="(option, index) in options" :key="index" :value="option.id">
           {{ option[name] }}
         </option>
@@ -48,3 +48,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+  option {
+    color: red;
+  }
+</style>
