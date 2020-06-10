@@ -1,11 +1,16 @@
 <template>
   <button class="outline-none cursor-pointer focus:outline-none rounded px-4 py-2" :class="computedBtnStyles" @click.prevent="clickHandler">
+    <FontIcon v-if="icon" :icon="icon" class="mr-1" />
     <slot> {{ btnText }} </slot>
   </button>
 </template>
 <script>
+import FontIcon from '@/components/icons'
 export default {
   name: 'Button',
+  components: {
+    FontIcon
+  },
   props: {
     btnStyles: {
       type: String,
@@ -18,6 +23,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    icon: {
+      type: String,
+      default: ''
     },
     isProcessing: {
       type: Boolean,

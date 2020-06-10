@@ -23,6 +23,7 @@
 
 import mixins from '@/components/forms/fields/mixins'
 import FieldWrapper from '@/components/forms/fields/field-wrapper'
+
 export default {
   name: 'TextField',
   components: {

@@ -7,3 +7,25 @@
     </div>
   </div>
 </template>
+<script>
+
+import NavBar from '@/components/navigations/navbar'
+
+export default {
+  name: 'Layout',
+  components: {
+    NavBar
+  },
+  data: () => ({
+    user: null
+  }),
+  computed: {
+    getBackgroundImage () {
+      return this.$auth.loggedIn ? 'stock-woman.jpg' : 'stock-woman.png'
+    }
+  },
+  created () {
+    this.user = this.$auth.user
+  }
+}
+</script>

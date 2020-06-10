@@ -13,7 +13,9 @@
         :value="value"
         @input="changeHandler"
       >
-        <option value="">-- {{ prompt }} --</option>
+        <option value="">
+          -- {{ prompt }} --
+        </option>
         <option v-for="(option, index) in options" :key="index" :value="option.id">
           {{ option[name] }}
         </option>

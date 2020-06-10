@@ -28,7 +28,8 @@
     "node-sass": "^4.14.1",
     "nuxt": "^2.0.0",
     "sass-loader": "^8.0.2",
-    "tailwindcss-typography": "^3.1.0"
+    "tailwindcss-typography": "^3.1.0",
+    "vue-clickaway": "^2.2.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",
