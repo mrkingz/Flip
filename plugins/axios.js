@@ -1,4 +1,4 @@
-export default ({ $axios, redirect }, inject) => {
+export default ({ store, $axios }, inject) => {
   $axios.setBaseURL(process.env.API_URL)
   const api = $axios.create({
     headers: {

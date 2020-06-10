@@ -29,9 +29,9 @@ export default {
       type: String,
       default: null
     },
-    clickHandler: {
+    submitHandler: {
       type: Function,
-      default: () => ({})
+      default: null
     },
     method: {
       type: String,
@@ -100,8 +100,9 @@ export default {
           const response = (typeof this.submitHandler === 'function')
             ? await this.submitHandler(fields, this.axiosTokenSource)
             : await this.axiosMethod(fields)
-
-          this.processResponse(response)
+          if (response) {
+            this.processResponse(response)
+          }
         }
       } catch (error) {
         this.processError(error)
@@ -133,20 +134,19 @@ export default {
      */
     processError (error) {
       const { response } = error
-      console.log(error)
-      if (response.status) {
-        switch (status) {
-          case 422:
-            this.errors = response.data.data
-            break
-          case 404:
-            this.alertType = this.response.ERROR
-            this.message = response.data.message
-            break
-          default:
-            this.alertType = this.response.ERROR
-            this.message = 'Internal error occured, try again.'
-        }
+      const status = response.status || 500
+      switch (status) {
+        case 422:
+          this.errors = response.data.data
+          break
+        case 400:
+        case 404:
+          this.alertType = this.response.ERROR
+          this.message = response.data.message
+          break
+        default:
+          this.alertType = this.response.ERROR
+          this.message = 'Internal error occured, try again.'
       }
       this.$emit('onError', error)
     }

@@ -115,7 +115,7 @@ module.exports = {
       login: '/signin',
       logout: '/signin',
       home: '/accounts',
-      callback: '/accounts'
+      callback: '/signin'
     }
   },
   env: {

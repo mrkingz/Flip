@@ -8,12 +8,11 @@
       <Form
         :fields="fields"
         class="guest-form"
-        btnText="Sign up"
+        btnText="Sign in"
         url="/login"
         validationSchemaName="signin"
-        :clickHandler="() => $auth.loginWith('local', { data: fields })"
+        :submitHandler="() => signin()"
         @onError="handleError"
-        @onSuccess="handleSuccesss"
       >
         <template v-slot:fields="{ errors, changeHandler }">
           <TextField
@@ -60,8 +59,8 @@ export default {
   },
   data: () => ({
     fields: {
-      identity: '',
-      password: ''
+      identity: 'mrkingz.dev@gmail.com',
+      password: 'Password1'
     }
   }),
   methods: {
@@ -73,8 +72,8 @@ export default {
         }
       }
     },
-    handleSuccesss (response) {
-      const { success, payload } = response
+    async signin () {
+      const { data: { success, payload } } = await this.$auth.loginWith('local', { data: this.fields })
       if (success) {
         this.$auth.setUser(payload.user)
         this.$auth.setToken('local', `Bearer ${payload.access_token}`)

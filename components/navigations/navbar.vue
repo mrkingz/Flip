@@ -3,7 +3,7 @@
     <nav class="flex items-center justify-between text-white mx-6 md:mx-40 h-20">
       <nuxt-link tag="img" to="/" src="/airtime-flip-min.png" class="w-32 md:w-40 h-12 md:h-16 z-50 cursor-pointer" />
       <div class="z-50 font-semibold">
-        <div v-if="$auth.loggedIn" class="relative block">
+        <div v-if="$auth.loggedIn" class="relative block text-white">
           <Dropdown
             btnStyles="px-2 text-regal-blue  py-1 text-base rounded hover:text-green-vogue hover:bg-white border border-transparent hover:border-gray-400 focus:shadow-white focus:shadow-true-violet"
           />
@@ -28,12 +28,6 @@ export default {
   name: 'Navber',
   components: {
     Dropdown
-  },
-  props: {
-    user: {
-      type: Object,
-      required: true
-    }
   }
 }
 </script>

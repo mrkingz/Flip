@@ -1,5 +1,5 @@
 export default (context) => {
   if (context.store.state.auth.loggedIn) {
-    return context.redirect('/dashboard')
+    return context.redirect('/accounts')
   }
 }
