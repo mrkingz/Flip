@@ -55,11 +55,11 @@ import Form from '@/components/forms'
 import TextField from '@/components/forms/fields/textfield'
 import AuthTemplate from '@/components/templates/auth'
 import SelectAccountType from '@/components/forms/fields/select'
-import Banks from '@/components/banks'
+import Banks from '@/components/banks-select'
 
 export default {
   name: 'CreateAccount',
-  middleware: 'auth',
+  // middleware: 'auth',
   components: {
     Form,
     Banks,

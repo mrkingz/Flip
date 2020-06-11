@@ -1,6 +1,9 @@
 
 module.exports = {
   mode: 'spa',
+  server: {
+    port: process.env.PORT
+  },
   /*
   ** Headers of the page
   */
@@ -12,7 +15,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Airtimeflip sign in page' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/airtime-flip-min.ico' }
     ]
   },
 
@@ -53,11 +56,8 @@ module.exports = {
           'faPencilAlt',
           'faTachometerAlt',
           'faEnvelope',
-          'faTimes',
-          'faList',
           'faUser',
           'faEye',
-          'faSignOutAlt',
           'faAt',
           'faLock',
           'faPhoneAlt',
@@ -110,16 +110,11 @@ module.exports = {
         },
         autoFetchUser: false
       }
-    },
-    redirect: {
-      login: '/signin',
-      logout: '/signin',
-      home: '/accounts',
-      callback: '/signin'
     }
   },
   env: {
-    baseURL: process.env.API_URL
+    baseURL: process.env.API_URL,
+    port: process.env.PORT
   },
   /*
   ** Axios module configuration

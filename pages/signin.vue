@@ -9,9 +9,8 @@
         :fields="fields"
         class="guest-form"
         btnText="Sign in"
-        url="/login"
         validationSchemaName="signin"
-        :submitHandler="() => signin()"
+        :submitHandler="signin"
         @onError="handleError"
       >
         <template v-slot:fields="{ errors, changeHandler }">
@@ -59,8 +58,8 @@ export default {
   },
   data: () => ({
     fields: {
-      identity: 'mrkingz.dev@gmail.com',
-      password: 'Password1'
+      identity: '',
+      password: ''
     }
   }),
   methods: {
@@ -73,11 +72,8 @@ export default {
       }
     },
     async signin () {
-      const { data: { success, payload } } = await this.$auth.loginWith('local', { data: this.fields })
-      if (success) {
-        this.$auth.setUser(payload.user)
-        this.$auth.setToken('local', `Bearer ${payload.access_token}`)
-      }
+      const { data } = await this.$auth.loginWith('local', { data: this.fields })
+      console.log(data)
     }
   },
   head () {

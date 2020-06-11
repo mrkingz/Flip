@@ -39,7 +39,7 @@ export default {
     },
     url: {
       type: String,
-      required: true
+      default: null
     },
     validationSchemaName: {
       type: String,
@@ -105,6 +105,7 @@ export default {
           }
         }
       } catch (error) {
+        console.log('Error :::::::::::::: ', error)
         this.processError(error)
       } finally {
         this.isProcessing = false
@@ -134,7 +135,7 @@ export default {
      */
     processError (error) {
       const { response } = error
-      const status = response.status || 500
+      const status = response ? response.status : 500
       switch (status) {
         case 422:
           this.errors = response.data.data
