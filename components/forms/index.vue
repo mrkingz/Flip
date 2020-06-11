@@ -101,11 +101,11 @@ export default {
             ? await this.submitHandler(fields, this.axiosTokenSource)
             : await this.axiosMethod(fields)
           if (response) {
-            this.processResponse(response)
+            await this.processResponse(response)
           }
         }
       } catch (error) {
-        console.log('Error >>>>>>>>>>>> ', error)
+        console.log('Error :::::::::::::: ', error)
         this.processError(error)
       } finally {
         this.isProcessing = false

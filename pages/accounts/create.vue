@@ -59,7 +59,7 @@ import Banks from '@/components/banks-select'
 
 export default {
   name: 'CreateAccount',
-  // middleware: 'auth',
+  middleware: ['auth'],
   components: {
     Form,
     Banks,

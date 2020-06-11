@@ -27,7 +27,7 @@ import AuthTemplate from '@/components/templates/auth'
 
 export default {
   name: 'AccountDetails',
-  middleware: 'auth',
+  middleware: ['auth'],
   components: {
     AuthTemplate
   },

@@ -10,7 +10,7 @@
         class="guest-form"
         btnText="Sign in"
         validationSchemaName="signin"
-        :submitHandler="() => signin()"
+        :submitHandler="signin"
         @onError="handleError"
       >
         <template v-slot:fields="{ errors, changeHandler }">
@@ -50,7 +50,7 @@ import TextField from '@/components/forms/fields/textfield'
 
 export default {
   name: 'SignIn',
-  middleware: 'guest',
+  middleware: ['guest'],
   components: {
     Form,
     TextField,
@@ -73,10 +73,11 @@ export default {
     },
     async signin () {
       const { data: { success, payload } } = await this.$auth.loginWith('local', { data: this.fields })
-      // if (success) {
-      //   this.$auth.setUser(payload.user)
-      //   this.$auth.setToken('local', `Bearer ${payload.access_token}`)
-      // }
+
+      if (success) {
+        this.$auth.setUser(payload.user)
+        this.$auth.setToken('local', `Bearer ${payload.access_token}`)
+      }
     }
   },
   head () {

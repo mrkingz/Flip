@@ -9,6 +9,6 @@
 <script>
 export default {
   name: 'LangingPage',
-  middleware: 'guest'
+  middleware: ['guest']
 }
 </script>

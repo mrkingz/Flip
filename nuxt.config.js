@@ -1,9 +1,6 @@
 
 module.exports = {
   mode: 'spa',
-  server: {
-    port: process.env.PORT
-  },
   /*
   ** Headers of the page
   */
@@ -85,8 +82,11 @@ module.exports = {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    // Doc: https://auth.nuxtjs.org/guide/setup.html
-    '@nuxtjs/auth'
+    // Doc: https://auth.nuxtjs.org/guide/setup.html christian@rhichtech.com
+    '@nuxtjs/auth',
+    ['nuxt-env', {
+       keys: ['API_URL']
+    }]
   ],
   /*
    ** Configure google fonts
@@ -110,11 +110,16 @@ module.exports = {
         },
         autoFetchUser: false
       }
+    },
+    redirect: {
+      login: '/signin',
+      logout: '/signin',
+      home: '/accounts',
+      callback: '/signin'
     }
   },
   env: {
     baseURL: process.env.API_URL,
-    port: process.env.PORT
   },
   /*
   ** Axios module configuration
