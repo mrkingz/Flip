@@ -2,7 +2,7 @@
 module.exports = {
   mode: 'spa',
   server: {
-    port: 8000
+    port: process.env.PORT
   },
   /*
   ** Headers of the page
@@ -15,7 +15,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Airtimeflip sign in page' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/airtime-flip-min.ico' }
     ]
   },
 
@@ -117,7 +117,8 @@ module.exports = {
     }
   },
   env: {
-    baseURL: process.env.API_URL
+    baseURL: process.env.API_URL,
+    port: process.env.PORT
   },
   /*
   ** Axios module configuration
