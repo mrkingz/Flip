@@ -104,7 +104,7 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/login', method: 'post', propertyName: 'payload.access_token' },
+          login: { url: '/login', method: 'post', propertyName: 'data.payload.access_token' },
           logout: false,
           user: false
         },

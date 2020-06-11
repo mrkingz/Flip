@@ -105,7 +105,7 @@ export default {
           }
         }
       } catch (error) {
-        console.log('Error >>>>>>>>>>>> ', error)
+        console.log('Error :::::::::::::: ', error)
         this.processError(error)
       } finally {
         this.isProcessing = false

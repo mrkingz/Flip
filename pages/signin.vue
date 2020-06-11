@@ -73,10 +73,11 @@ export default {
     },
     async signin () {
       const { data: { success, payload } } = await this.$auth.loginWith('local', { data: this.fields })
-      // if (success) {
-      //   this.$auth.setUser(payload.user)
-      //   this.$auth.setToken('local', `Bearer ${payload.access_token}`)
-      // }
+      console.log(success, payload)
+      if (success) {
+        this.$auth.setUser(payload.user)
+        this.$auth.setToken('local', `Bearer ${payload.access_token}`)
+      }
     }
   },
   head () {
