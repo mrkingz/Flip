@@ -9,7 +9,6 @@
         :fields="fields"
         class="guest-form"
         btnText="Sign in"
-        url="/login"
         validationSchemaName="signin"
         :submitHandler="() => signin()"
         @onError="handleError"
@@ -73,15 +72,11 @@ export default {
       }
     },
     async signin () {
-      const { data } = await this.$auth.loginWith('local', { data: this.fields }) || {}
-      const { success, payload } = data
-      console.log(data, success, 'Payload >>>>>>>>>>>>> ', payload, payload.user)
-      if (payload && payload.access_token) {
-        this.$nextTick(() => {
-          this.$auth.setUser(payload.user)
-          this.$auth.setToken('local', `Bearer ${payload.access_token}`)
-        })
-      }
+      const { data: { success, payload } } = await this.$auth.loginWith('local', { data: this.fields })
+      // if (success) {
+      //   this.$auth.setUser(payload.user)
+      //   this.$auth.setToken('local', `Bearer ${payload.access_token}`)
+      // }
     }
   },
   head () {

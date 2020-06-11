@@ -110,10 +110,6 @@ module.exports = {
         },
         autoFetchUser: false
       }
-    },
-    redirect: {
-      login: '/signin',
-      logout: '/signin'
     }
   },
   env: {

@@ -39,7 +39,7 @@ export default {
     },
     url: {
       type: String,
-      required: true
+      default: null
     },
     validationSchemaName: {
       type: String,
