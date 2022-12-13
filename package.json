@@ -24,7 +24,7 @@
     "@nuxtjs/proxy": "^2.0.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "cross-env": "^7.0.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "node-sass": "^4.14.1",
     "nuxt": "^2.0.0",
     "sass-loader": "^8.0.2",
